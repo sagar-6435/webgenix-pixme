@@ -1,0 +1,12 @@
+{
+  "name": "pixme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Pixme — AI-powered event photo sharing platform",
+  "scripts": {
+    "dev:server": "npm --prefix server run start:dev",
+    "dev:web": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "db:migrate": "npm --prefix server run db:migrate"
+  }
+}

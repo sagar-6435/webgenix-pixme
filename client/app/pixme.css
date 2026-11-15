@@ -1,0 +1,42 @@
+html:has(.agency-site) {
+  scrollbar-color: #9baa70 #202625;
+  scrollbar-width: thin;
+}
+
+html:not(:has(.agency-site)) {
+  scrollbar-color: #f05b3f #e8eee9;
+  scrollbar-width: thin;
+}
+
+html:has(.agency-site)::-webkit-scrollbar,
+html:not(:has(.agency-site))::-webkit-scrollbar {
+  width: 12px;
+}
+
+html:has(.agency-site)::-webkit-scrollbar-track {
+  background: #202625;
+}
+
+html:has(.agency-site)::-webkit-scrollbar-thumb {
+  border: 3px solid #202625;
+  border-radius: 999px;
+  background: #9baa70;
+}
+
+html:has(.agency-site)::-webkit-scrollbar-thumb:hover {
+  background: #d8f36d;
+}
+
+html:not(:has(.agency-site))::-webkit-scrollbar-track {
+  background: #e8eee9;
+}
+
+html:not(:has(.agency-site))::-webkit-scrollbar-thumb {
+  border: 3px solid #e8eee9;
+  border-radius: 999px;
+  background: #f05b3f;
+}
+
+html:not(:has(.agency-site))::-webkit-scrollbar-thumb:hover {
+  background: #173b34;
+}
