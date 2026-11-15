@@ -1056,6 +1056,7 @@ body:has(.agency-site)::-webkit-scrollbar-thumb:hover {
 @media (max-width: 700px) {
   .reference-hero {
     min-height: 720px;
+    margin-bottom: 24px;
   }
 
   .reference-hero-image {
@@ -2241,9 +2242,9 @@ background: #171717;
 
 .site-footer-links {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
 }
 
 .site-footer-links a {
@@ -2659,6 +2660,7 @@ background: #171717;
 @media (max-width: 700px) {
   .reference-home .reference-hero {
     min-height: 720px;
+    margin-bottom: 24px;
   }
 
   .reference-home .reference-hero-image {
@@ -3106,10 +3108,11 @@ background: #171717;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 0 6vw;
+  padding: 36px 6vw;
   border-top: 1px solid #303630;
-  color: #7e887f;
-  font-size: 10px;
+  color: #ffffff;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
 @media (max-width: 700px) {
@@ -4250,7 +4253,7 @@ background: #171717;
   padding-left: 78px;
 }
 
-.reference-home .reference-process-list > div {
+.reference-home .reference-process-list > div.reference-process-item {
   position: relative;
   display: grid;
   grid-template-columns: 86px minmax(0, 520px);
@@ -4262,15 +4265,15 @@ background: #171717;
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
-.reference-home .reference-process-list > div > span,
-.reference-home .reference-process-list > div > div {
+.reference-home .reference-process-list > div.reference-process-item > span,
+.reference-home .reference-process-list > div.reference-process-item > div {
   opacity: .35;
   transform: translateY(14px);
   transition: opacity 500ms ease, transform 500ms ease;
 }
 
-.reference-home .reference-process-list > div.is-visible > span,
-.reference-home .reference-process-list > div.is-visible > div {
+.reference-home .reference-process-list > div.reference-process-item.is-visible > span,
+.reference-home .reference-process-list > div.reference-process-item.is-visible > div {
   opacity: 1;
   transform: translateY(0);
 }
@@ -4313,17 +4316,123 @@ background: #171717;
   color: #c9c6b5;
 }
 
+.reference-home .reference-process-list > .reference-process-timeline-rail {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  display: block;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.reference-process-progress-line {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  width: 2px;
+  height: 0;
+  background: #f0442d;
+  box-shadow: 0 0 8px rgba(240, 68, 45, 0.7);
+  transform: translateX(-50%);
+  pointer-events: none;
+  will-change: height;
+}
+
+.reference-process-moving-point {
+  position: absolute;
+  top: 0;
+  left: 24px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f0442d;
+  box-shadow: 0 0 10px #f0442d, 0 0 20px rgba(240, 68, 45, 0.85);
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(-50%, -50%, 0);
+  z-index: 6;
+}
+
+.reference-process-moving-point::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+}
+
+.reference-process-moving-point::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(240, 68, 45, 0.7);
+  animation: process-point-pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes process-point-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0.35;
+  }
+  100% {
+    transform: scale(2.3);
+    opacity: 0;
+  }
+}
+
+.reference-home .reference-process-list > div.is-active > span {
+  border-color: #f0442d;
+  background: #f0442d;
+  color: #171717;
+  box-shadow: 0 0 16px rgba(240, 68, 45, .45);
+}
+
+.reference-home .reference-process-list > div.is-active h3 {
+  color: #ffffff;
+}
+
 @media (max-width: 700px) {
   .reference-home .reference-process-list {
     margin-top: 52px;
     padding-left: 52px;
   }
 
-  .reference-home .reference-process-list > div {
+  .reference-home .reference-process-list > div.reference-process-item {
     grid-template-columns: 58px minmax(0, 1fr);
     gap: 18px;
     min-height: 156px;
     padding-bottom: 32px;
+  }
+
+  .reference-home .reference-process-list > .reference-process-timeline-rail {
+    left: 0;
+    width: 40px;
+  }
+
+  .reference-process-progress-line {
+    left: 24px;
+  }
+
+  .reference-process-moving-point {
+    left: 24px;
+    width: 12px;
+    height: 12px;
   }
 
   .reference-home .reference-process-list::before {
