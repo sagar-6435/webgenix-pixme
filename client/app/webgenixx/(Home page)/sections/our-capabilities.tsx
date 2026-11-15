@@ -5,6 +5,7 @@ const capabilities = [
   ['02', 'Mobile apps', 'Android, iOS, and cross-platform products people enjoy using.'],
   ['03', 'UI/UX design', 'Research, interfaces, and journeys that make sense immediately.'],
   ['04', 'SaaS development', 'Custom software and scalable platforms for ambitious products.'],
+  ['05', 'Digital marketing', 'Strategic campaigns, SEO, social media, and performance marketing to grow your brand.'],
 ];
 
 export default function OurCapabilities() {
